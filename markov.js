@@ -8,6 +8,7 @@ class MarkovMachine {
   constructor(text) {
     let words = text.split(/[ \r\n]+/);
     this.words = words.filter(c => c !== "");
+    let chains = {};
     this.makeChains();
   }
 
@@ -18,6 +19,15 @@ class MarkovMachine {
 
   makeChains() {
     // TODO
+    this.chains = {};
+    for(let i in this.words){
+      console.log(i);
+      if(!this.chains[this.words[i]]){
+        this.chains[this.words[i]] = [];
+      };
+      this.chains[this.words[i]].push(this.words[+i+1]);
+    }
+    // return chains;
   }
 
 
